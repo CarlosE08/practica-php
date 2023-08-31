@@ -15,7 +15,7 @@ final class PracticaTest extends TestCase
     public function testForm(): void
     {
         $form = file_get_contents('index.php');
-        $this->assertStringContainsStringIgnoringCase('action="store.php"', $form, $message = 'No se ha definido action');
+        $this->assertStringContainsStringIgnoringCase('action="index.php"', $form, $message = 'No se ha definido action');
         $this->assertStringContainsStringIgnoringCase('method="post"', $form, $message = 'No está asignado el método post');
     }
 
@@ -31,7 +31,7 @@ final class PracticaTest extends TestCase
     public function testPost(): void
     {
         $client = new Client();
-        $response = $client->post('http://localhost/practica-php/store.php', [
+        $response = $client->post('http://localhost/practica-php/index.php', [
                 'form_params' => [
                     'nombre' => 'Prueba Nombre',
                     'correo' => 'prueba@test.com',
